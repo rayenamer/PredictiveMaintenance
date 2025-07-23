@@ -1,0 +1,74 @@
+.ts-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a23 60%, #1a1a40 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.ts-dashboard-card {
+  background: #181a2a;
+  border-radius: 24px;
+  box-shadow: 0 0 48px #00f0ff22, 0 2px 24px #000a;
+  padding: 48px 36px 36px 36px;
+  max-width: 720px;
+  width: 100%;
+  margin: 48px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+.ts-dashboard-card h1 {
+  color: #00f0ff;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-shadow: 0 0 16px #00f0ff44;
+}
+.ts-dashboard-card h2 {
+  color: #e0e6f7;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 32px;
+  text-shadow: 0 0 8px #00f0ff22;
+}
+.ts-chart-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 18px;
+}
+.ts-chart {
+  width: 100%;
+  max-width: 600px;
+  height: 240px;
+  background: none;
+  display: block;
+}
+.ts-legend {
+  margin-top: 12px;
+  color: #00f0ff;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.legend-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #00f0ff;
+  box-shadow: 0 0 12px #00f0ff88;
+  display: inline-block;
+}
+
+@media (max-width: 800px) {
+  .ts-dashboard-card {
+    padding: 24px 4vw 24px 4vw;
+    max-width: 98vw;
+  }
+  .ts-chart {
+    max-width: 98vw;
+  }
+}

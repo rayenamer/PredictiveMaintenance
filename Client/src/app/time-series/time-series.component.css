@@ -1,10 +1,29 @@
-.ts-bg {
-  min-height: 100vh;
+html, body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
   background: linear-gradient(135deg, #0a0a23 60%, #1a1a40 100%);
+  color: #e0e6f7;
+  overflow: hidden;
+}
+
+.ts-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  min-width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
   padding: 0;
+  z-index: 0;
 }
 
 .ts-dashboard-card {
@@ -12,37 +31,39 @@
   border-radius: 24px;
   box-shadow: 0 0 48px #00f0ff22, 0 2px 24px #000a;
   padding: 48px 36px 36px 36px;
-  max-width: 720px;
-  width: 100%;
-  margin: 48px 0;
+  max-width: 1100px;
+  width: 90vw;
+  /* Remove margin to eliminate white space */
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 2;
 }
+
 .ts-dashboard-card h1 {
   color: #00f0ff;
-  font-size: 2.2rem;
+  font-size: 2.8rem;
   font-weight: 700;
   margin-bottom: 8px;
   text-shadow: 0 0 16px #00f0ff44;
 }
 .ts-dashboard-card h2 {
   color: #e0e6f7;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 400;
   margin-bottom: 32px;
   text-shadow: 0 0 8px #00f0ff22;
 }
 .ts-chart-container {
   width: 100%;
-  overflow-x: auto;
   margin-bottom: 18px;
+  overflow-x: unset;
 }
 .ts-chart {
   width: 100%;
-  max-width: 600px;
-  height: 240px;
+  max-width: 1000px;
+  height: 480px;
   background: none;
   display: block;
 }
@@ -63,12 +84,50 @@
   display: inline-block;
 }
 
-@media (max-width: 800px) {
+.animated-dots {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+.dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00f0ff 0%, #0a0a23 80%);
+  opacity: 0.7;
+  filter: blur(1.5px);
+  animation: dot-move 8s linear infinite, dot-glow 3s infinite alternate;
+}
+@keyframes dot-glow {
+  0% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.3); }
+}
+@keyframes dot-move {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(60px); }
+}
+
+@media (max-width: 1200px) {
   .ts-dashboard-card {
-    padding: 24px 4vw 24px 4vw;
     max-width: 98vw;
+    width: 98vw;
   }
   .ts-chart {
     max-width: 98vw;
+  }
+}
+
+@media (max-width: 800px) {
+  .ts-dashboard-card {
+    padding: 24px 4vw 24px 4vw;
+    max-width: 100vw;
+    width: 100vw;
+  }
+  .ts-chart {
+    max-width: 100vw;
+    height: 320px;
   }
 }

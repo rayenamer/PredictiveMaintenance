@@ -1,2 +1,17 @@
-<p>timeseries works</p>
-<p-chart type="line" [data]="data" [options]="options" class="h-[30rem]"></p-chart>
+<div class="ts-bg">
+  <div class="animated-dots">
+    <div *ngFor="let dot of dots" class="dot" [ngStyle]="{'top.px': dot.y, 'left.px': dot.x, 'animation-delay.s': dot.delay}"></div>
+  </div>
+  <div class="ts-dashboard-card">
+    <h1>Predicted Failures Over Time</h1>
+    <h2>Time Series Forecasting Results</h2>
+    <div class="ts-chart-container">
+      <p-chart type="line" [data]="data" [options]="options" class="ts-chart"></p-chart>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1rem;">
+      <button (click)="prevPage()" [disabled]="currentPage === 0">Previous</button>
+      <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="(currentPage + 1) * pageSize >= predictions.length">Next</button>
+    </div>
+  </div>
+</div>

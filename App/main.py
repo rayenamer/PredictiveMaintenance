@@ -5,8 +5,18 @@ from database import get_data_from_db
 from catboost import Pool
 from sklearn.preprocessing import OrdinalEncoder
 from datetime import datetime
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Or use ["http://localhost:4200"] for more security
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 PredictDate = load("DatePrediction.joblib")
 FailurePrediction = load("FailureClassification.joblib")
 TimeSeries = load("TimeSeriesForecasting.joblib")
@@ -18,7 +28,7 @@ def predictTimeSeries():
     forecast = TimeSeries.predict(360)
     forecast = forecast.reset_index()
     forecast['Date'] = datelist
-    return {"predictions": forecast.to_dict(orient="records")}
+    return forecast.to_dict(orient="records")
 
 @app.get("/predict")
 def predictDate():
@@ -52,9 +62,15 @@ def predictDate():
     date_preds = PredictDate.predict(X)
     # Convert ordinal predictions to ISO date strings using datetime.fromordinal
     date_preds_str = [str(datetime.fromordinal(int(round(pred)))) for pred in date_preds]
-    return {
-        "PredictedStartDates": date_preds_str
-    }
+    # Return each machine with its predicted date
+    results = []
+    for i, row in df.iterrows():
+        results.append({
+            "Equipment": row["Equipment"],
+            "Ordre de travail": row["Ordre de travail"],
+            "PredictedStartDate": date_preds_str[i]
+        })
+    return results
 
 @app.get("/predict_cause")
 def predictCause():

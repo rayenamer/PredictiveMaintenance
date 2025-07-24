@@ -1,1 +1,15 @@
-<p>predcition-cause works!</p>
+
+  <div class="cause-content">
+    <h1>Predicted Failure Causes</h1>
+    <div class="machine-cards">
+      @for (machine of PredictionMachine; track machine) {
+        <div class="machine-card">
+          <div class="machine-title">{{ machine.Equipment }}</div>
+          <div class="machine-detail"><strong>Order Number:</strong> {{ machine['Ordre de travail'] }}</div>
+          <div class="machine-detail"><strong>Predicted Start Date:</strong> {{ machine.PredictedStartDate }}</div>
+          <div class="machine-detail"><strong>Predicted Cause:</strong> {{ machine.PredictedCause }}</div>
+        </div>
+      }
+    </div>
+  </div>
+

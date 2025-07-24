@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+html, body, app-root {
+  height: 100vh;
+  width: 100vw;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: linear-gradient(135deg, #0a0a23 60%, #1a1a40 100%) !important;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}

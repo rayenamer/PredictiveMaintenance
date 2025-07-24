@@ -1,0 +1,66 @@
+.cause-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #0a0a23 60%, #1a1a40 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.cause-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  width: 100%;
+}
+.cause-content h1 {
+  text-align: center;
+  margin-bottom: 32px;
+  color: #00f0ff;
+}
+.machine-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+  max-width: 1200px;
+}
+.machine-card {
+  background: rgba(40, 44, 52, 0.8);
+  border-radius: 16px;
+  padding: 24px 32px;
+  min-width: 300px;
+  max-width: 350px;
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.machine-card:hover {
+  box-shadow: 0 0 32px #00f0ffcc;
+}
+.machine-title {
+  color: #00f0ff;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 12px;
+}
+.machine-detail {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+@media (max-width: 900px) {
+  .machine-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .machine-card {
+    width: 90vw;
+    max-width: 340px;
+  }
+}

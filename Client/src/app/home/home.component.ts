@@ -26,20 +26,21 @@ export class HomeComponent implements OnInit, OnDestroy {
   features = [
     {
       icon: '⚡',
-      title: 'Real-Time Prediction',
-      desc: 'Instantly forecast equipment failures before they happen.'
+      title: 'On-Demand Failure Forecasting',
+      desc: 'Gain predictive insights into equipment health with real-time forecasting capabilities.'
     },
     {
       icon: '📈',
-      title: 'Smart Analytics',
-      desc: 'Deep insights with advanced AI-driven analytics and dashboards.'
+      title: 'Advanced Data Intelligence',
+      desc: 'Harness the power of AI to generate detailed analytics and drive informed decisions.'
     },
     {
       icon: '🦾',
-      title: 'Automated Insights',
-      desc: 'Let AI monitor, learn, and alert you to critical issues automatically.'
+      title: 'Autonomous Alerting & Monitoring',
+      desc: 'Let AI autonomously monitor systems, flag issues, and trigger alerts for seamless operations.'
     }
   ];
+
 
   ngOnInit() {
     // Initialize dots with random positions and velocities

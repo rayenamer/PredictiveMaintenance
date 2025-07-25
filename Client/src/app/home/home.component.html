@@ -13,39 +13,43 @@
         <svg width="220" height="220" viewBox="0 0 220 220" class="ai-orb-static">
           <defs>
             <radialGradient id="orbMainGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#00f0ff" stop-opacity="1"/>
-              <stop offset="100%" stop-color="#0a0a23" stop-opacity="0.7"/>
+              <stop offset="0%" stop-color="#00f0ff" stop-opacity="1" />
+              <stop offset="100%" stop-color="#0a0a23" stop-opacity="0.7" />
             </radialGradient>
             <radialGradient id="orbCore" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
-              <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.2"/>
+              <stop offset="0%" stop-color="#fff" stop-opacity="1" />
+              <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.2" />
             </radialGradient>
             <linearGradient id="neuralLine" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.7"/>
-              <stop offset="100%" stop-color="#fff" stop-opacity="0.2"/>
+              <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.7" />
+              <stop offset="100%" stop-color="#fff" stop-opacity="0.2" />
             </linearGradient>
           </defs>
           <!-- Outer glow rings -->
-          <circle cx="110" cy="110" r="100" fill="none" stroke="#00f0ff" stroke-width="2" opacity="0.12"/>
-          <circle cx="110" cy="110" r="85" fill="none" stroke="#00f0ff" stroke-width="1.5" opacity="0.08"/>
+          <circle cx="110" cy="110" r="100" fill="none" stroke="#00f0ff" stroke-width="2" opacity="0.12" />
+          <circle cx="110" cy="110" r="85" fill="none" stroke="#00f0ff" stroke-width="1.5" opacity="0.08" />
           <!-- Main orb -->
-          <circle cx="110" cy="110" r="80" fill="url(#orbMainGlow)"/>
+          <circle cx="110" cy="110" r="80" fill="url(#orbMainGlow)" />
           <!-- Neural network pattern -->
-          <polyline points="70,110 90,80 110,110 130,90 150,110" stroke="url(#neuralLine)" stroke-width="2" fill="none" opacity="0.7"/>
-          <polyline points="110,60 110,110 110,160" stroke="url(#neuralLine)" stroke-width="2" fill="none" opacity="0.5"/>
-          <polyline points="90,140 110,110 130,140" stroke="url(#neuralLine)" stroke-width="2" fill="none" opacity="0.5"/>
+          <polyline points="70,110 90,80 110,110 130,90 150,110" stroke="url(#neuralLine)" stroke-width="2" fill="none"
+            opacity="0.7" />
+          <polyline points="110,60 110,110 110,160" stroke="url(#neuralLine)" stroke-width="2" fill="none"
+            opacity="0.5" />
+          <polyline points="90,140 110,110 130,140" stroke="url(#neuralLine)" stroke-width="2" fill="none"
+            opacity="0.5" />
           <!-- Brain-like inner shape -->
-          <ellipse cx="110" cy="110" rx="32" ry="20" fill="#00f0ff" opacity="0.08"/>
-          <ellipse cx="110" cy="110" rx="22" ry="12" fill="#00f0ff" opacity="0.12"/>
+          <ellipse cx="110" cy="110" rx="32" ry="20" fill="#00f0ff" opacity="0.08" />
+          <ellipse cx="110" cy="110" rx="22" ry="12" fill="#00f0ff" opacity="0.12" />
           <!-- Central glowing core -->
-          <circle cx="110" cy="110" r="18" fill="url(#orbCore)" stroke="#00f0ff" stroke-width="3"/>
+          <circle cx="110" cy="110" r="18" fill="url(#orbCore)" stroke="#00f0ff" stroke-width="3" />
         </svg>
       </div>
       <div class="hero-text">
-        <h1>AI Predictive Maintenance</h1>
-        <h2>Empower your operations with intelligent, real-time equipment monitoring</h2>
-        <button class="get-started">Get Started</button>
+        <h1>⚙️ Smart Predictive Maintenance</h1>
+        <h2>Enhance operational efficiency with cutting-edge, real-time asset monitoring</h2>
+        <button class="get-started">Initiate Optimization</button>
       </div>
+
     </section>
     <section class="features">
       <div class="feature-card" *ngFor="let feature of features; let i = index" [attr.data-index]="i">
@@ -58,7 +62,8 @@
       <!-- Placeholder for testimonials, can be added later -->
     </section>
     <div class="animated-dots">
-      <div *ngFor="let dot of dots" class="dot" [ngStyle]="{'top.px': dot.y, 'left.px': dot.x, 'animation-delay.s': dot.delay}"></div>
+      <div *ngFor="let dot of dots" class="dot"
+        [ngStyle]="{'top.px': dot.y, 'left.px': dot.x, 'animation-delay.s': dot.delay}"></div>
     </div>
   </div>
 </div>

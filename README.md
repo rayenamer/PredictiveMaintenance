@@ -1,111 +1,109 @@
-# 🛠️ Predictive Maintenance System
+# Predictive Maintenance System for Industrial Equipment
 
-This repository contains a comprehensive suite of machine learning models designed for equipment failure analysis and predictive maintenance optimization.
+![System Architecture](https://ik.imagekit.io/sh09gdtxr/Architecture.png)
 
-## 📊 Model Overview
+## Overview
+This project is a predictive maintenance system designed to forecast potential equipment failures in industrial settings. The system combines machine learning models for failure classification and time-series forecasting with a modern web interface to provide actionable insights to maintenance teams.
 
-| Model | Type | Purpose | Best Performing Algorithm | Performance Metric |
-|-------|------|---------|---------------------------|--------------------|
-| 1️⃣ Failure Date Prediction | Supervised Regression | Predict when failure will occur | CatBoost Regressor | R²: 95% |
-| 2️⃣ Failure Classification | Supervised Classification | Identify equipment likely to fail | Random Forest Classifier | Accuracy: 94% |
-| 3️⃣ Failure Trend Forecasting | Time Series Forecasting | Predict system-level failure rates | LSTM | MAE: 6% |
-| 4️⃣ Failure Cause Clustering | Unsupervised Learning | Group similar failure causes | K-means + LDA | Silhouette: 0.52 |
-| 5️⃣ Failure Similarity Matching | NLP Embeddings | Find similar historical failures | BERT | Cosine Similarity: 0.80 |
+## Project Structure
 
-## 🧠 Detailed Model Descriptions
-
-### 1️⃣ Failure Date Prediction (`when_fail.py`)
-**Purpose:** Predict exact failure dates for proactive maintenance scheduling  
-**Features:**  
-- Uses equipment age, usage metrics, environmental conditions  
-- Regression approach with temporal forecasting  
-**Implementation:**  
-```python
-from catboost import CatBoostRegressor
-model = CatBoostRegressor(iterations=500, learning_rate=0.1, depth=6)
-model.fit(X_train, y_train)
+```
+.
+├── App/                               # Backend server and models
+│   ├── __pycache__/
+│   ├── CleanData.csv                  # Cleaned dataset
+│   ├── *.joblib                       # Trained model files
+│   ├── database.py                    # Database interaction module
+│   └── main.py                        # Backend server
+│
+├── Client/                            # Frontend Angular application
+│   ├── public/
+│   ├── src/
+│   │   ├── app/                       # Angular components
+│   │   ├── environments/              # Environment configs
+│   │   ├── index.html
+│   │   ├── main.ts
+│   │   └── styles.css
+│   ├── .editorconfig
+│   ├── .gitignore
+│   ├── angular.json
+│   ├── package*.json                  # NPM dependencies
+│   └── tsconfig*.json                 # TypeScript configs
+│
+├── Modeling/                          # Jupyter notebooks for model development
+│   ├── *.ipynb                        # Analysis and modeling notebooks
+│   ├── *.csv                          # Datasets
+│   ├── PieChart02.png                 # Sample visualization
+│   └── README.md                      # Modeling documentation
+│
+├── Architecture.png                   # System architecture diagram
+└── README.md                          # This file
 ```
 
-### 2️⃣ Failure Classification (`will_fail.py`)
-**Purpose:** Binary classification of equipment failure risk  
-**Features:**  
-- Same input features as Model 1  
-- Outputs probability of failure  
-**Implementation:**  
-```python
-from sklearn.ensemble import RandomForestClassifier
-model = RandomForestClassifier(n_estimators=200, max_depth=10)
-model.fit(X_train, y_train)
-```
+## Features
 
-### 3️⃣ Failure Trend Forecasting (`trend_forecast.py`)
-**Purpose:** Predict failure rates over time for resource planning  
-**Features:**  
-- Time-series analysis of aggregated failure counts  
-- Handles seasonal patterns  
-**Implementation:**  
-```python
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense
-model = Sequential()
-model.add(LSTM(50, activation='relu', input_shape=(n_steps, n_features)))
-model.add(Dense(1))
-model.compile(optimizer='adam', loss='mse')
-```
+1. **Failure Classification**: Predicts the type of potential equipment failure
+2. **Time-Series Forecasting**: Anticipates when failures might occur
+3. **Maintenance Dashboard**: Visual interface for monitoring equipment health
+4. **Data Processing Pipeline**: Cleans and prepares industrial sensor data
 
-### 4️⃣ Failure Cause Clustering (`cause_clusters.py`)
-**Purpose:** Uncover root causes from maintenance logs  
-**Features:**  
-- NLP processing of free-text reports  
-- Topic modeling for interpretable clusters  
-**Implementation:**  
-```python
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.decomposition import LatentDirichletAllocation
-tfidf = TfidfVectorizer(max_df=0.95, min_df=2)
-lda = LatentDirichletAllocation(n_components=5)
-```
+## Prerequisites
 
-### 5️⃣ Failure Similarity Matching (`similar_failures.py`)
-**Purpose:** Find similar historical failure cases  
-**Features:**  
-- Semantic similarity comparison  
-- Pre-trained language model embeddings  
-**Implementation:**  
-```python
-from sentence_transformers import SentenceTransformer
-model = SentenceTransformer('bert-base-nli-mean-tokens')
-embeddings = model.encode(failure_descriptions)
-```
+- Python 3.8+
+- Node.js 14+
+- Angular CLI
+- Jupyter Notebook (for model development)
 
-## 🚀 Getting Started
+## Installation
 
-1. Install requirements:
-```bash
-pip install -r requirements.txt
-```
+### Backend Setup
+1. Navigate to the `App` directory
+2. Create a virtual environment: `python -m venv venv`
+3. Activate the environment:
+   - Windows: `venv\Scripts\activate`
+   - Unix/MacOS: `source venv/bin/activate`
+4. Install dependencies: `pip install -r requirements.txt`
 
-2. Run individual models:
-```bash
-python models/when_fail.py --data equipment_data.csv
-```
+### Frontend Setup
+1. Navigate to the `Client` directory
+2. Install dependencies: `npm install`
+3. Configure environment variables in `src/environments/`
 
-3. Or run the full pipeline:
-```bash
-python main.py --mode full_analysis
-```
+## Running the Application
 
-## 📈 Expected Outcomes
+1. Start the backend server:
+   ```bash
+   cd App
+   python main.py
+   ```
 
-- 30-50% reduction in unplanned downtime
-- 20-35% improvement in maintenance efficiency
-- 15-25% decrease in maintenance costs
-- Actionable insights from historical failure patterns
+2. Start the frontend application:
+   ```bash
+   cd Client
+   ng serve
+   ```
 
-## 🤝 Contributing
+3. Access the application at `http://localhost:4200`
 
-Pull requests welcome! Please follow the contribution guidelines in CONTRIBUTING.md.
+## Model Development
 
-## 📜 License
+The `Modeling` directory contains Jupyter notebooks documenting the entire data science workflow:
+- Data understanding and preprocessing
+- Exploratory data analysis
+- Model training and evaluation
+- Visualization of results
 
-MIT License - see LICENSE file for details
+## System Architecture
+
+The application follows a client-server architecture:
+1. **Frontend**: Angular-based web interface
+2. **Backend**: Python server with REST API
+3. **Models**: Pre-trained machine learning models for predictions
+4. **Data Pipeline**: Processes incoming sensor data
+
+![Architecture Diagram](https://ik.imagekit.io/sh09gdtxr/Architecture.png)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
